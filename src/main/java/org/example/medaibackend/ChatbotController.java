@@ -26,6 +26,8 @@ public class ChatbotController {
     @PostMapping("/ask")
     public ResponseEntity<String> handleQuestion(@RequestBody QuestionDTO question)
     {
+        ServiceML.statusWebSocketHandler = statusWebSocketHandler;
+
         try {
             statusWebSocketHandler.broadcastStatus("Processing your question...");
         } catch (Exception e) {
